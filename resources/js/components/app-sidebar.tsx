@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
+import { BookOpen, Folder, LayoutGrid, ClipboardList, Plus, List } from 'lucide-react';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
@@ -7,6 +7,9 @@ import {
     Sidebar,
     SidebarContent,
     SidebarFooter,
+    SidebarGroup,
+    SidebarGroupLabel,
+    SidebarGroupContent,
     SidebarHeader,
     SidebarMenu,
     SidebarMenuButton,
@@ -21,6 +24,19 @@ const mainNavItems: NavItem[] = [
         title: 'Dashboard',
         href: dashboard(),
         icon: LayoutGrid,
+    },
+];
+
+const assessmentNavItems: NavItem[] = [
+    {
+        title: 'All Assessments',
+        href: '/assessments',
+        icon: List,
+    },
+    {
+        title: 'Create New',
+        href: '/assessments/create',
+        icon: Plus,
     },
 ];
 
@@ -54,6 +70,16 @@ export function AppSidebar() {
 
             <SidebarContent>
                 <NavMain items={mainNavItems} />
+                
+                <SidebarGroup>
+                    <SidebarGroupLabel>
+                        <ClipboardList className="h-4 w-4 mr-2" />
+                        Assessments
+                    </SidebarGroupLabel>
+                    <SidebarGroupContent>
+                        <NavMain items={assessmentNavItems} />
+                    </SidebarGroupContent>
+                </SidebarGroup>
             </SidebarContent>
 
             <SidebarFooter>
